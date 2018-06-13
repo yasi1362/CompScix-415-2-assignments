@@ -18,19 +18,31 @@ library(mdsr)
 Lets look at some data:
 
 ```{r}
-data("WorldCities")
-glimpse(WorldCities)
+data(WorldCities)
+?WorldCities
 ```
-Q1 - The WorldCities data set includes 10 variables, such as:
+**QUESTION 1: How many observations and variables are there in this data set? What are some of the variable names? Type up your answer in your document using complete sentences.
+
+The WorldCities data set includes 10 variables, such as:
 Code, name, latitude, longitude, country, country region, population, region code, region, date.
 
+Lets take a glimpseof the data:
 ```{r}
-
+glimpse(WorldCities)
 ```
 
-
-Q2 - Unique values for country region:
-
+Lets extract part of the data:
+```{r}
+WorldCities <- head(WorldCities, 200)
+country_col <- WorldCities$country
+unique(country_col)
+```
+**QUESTION 2: There is a column called region in the data set. Can you extract this and show only the unique values?
+Unique values for country region:
+```{r}
+region_col <- WorldCities$region
+unique(region_col)
+```
 
 Q3-
 WorldCities %>% country_col %>% unique()
@@ -45,6 +57,6 @@ unique(country_col)
 Q4 - 
 
 ```{r}
-WorldCities %>% ggplot(aes(x = population, y = region)) + ggtitle("World Region and population") + geom_histogram()
+WorldCities %>% ggplot(aes(x = population)) + ylab( "something") + ggtitle("World Region and population") + geom_histogram()
 ```
 
