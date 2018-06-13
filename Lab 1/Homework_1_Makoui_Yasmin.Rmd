@@ -1,0 +1,29 @@
+---
+title: "CompSciX 415.2 Homework 1"
+author: "Yasmin"
+date: "6/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+My Github repository for my assignment can be found at this URL: [https://github.com/yasi1362/CompScix-415-2-assignments](https://github.com/yasi1362/CompScix-415-2-assignments)
+
+Q1 - The WorldCities data set includes 10 variables, such as:
+Code, name, latitude, longitude, country, country region, population, region code, region, date.
+
+Q2 - Unique values for country region:
+Europe/Andorra, 
+Asia/Kabul, 
+America/Anguilla, 
+Asia/Yerevan, 
+America/Argentina/Buenos_Aires, 
+America/Argentina/Salta, 
+America/Argentina/San_Juan, 
+America/Argentina/Tucuman, 
+America/Argentina/Cordoba, 
+Africa/Luanda, 
+Europe/Tirane, 
+America/Antigua, 
+Asia/Dubai, 
