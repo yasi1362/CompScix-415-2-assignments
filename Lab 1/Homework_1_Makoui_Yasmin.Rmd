@@ -63,6 +63,6 @@ WorldCities %>% ggplot(aes(x = population)) + geom_histogram()
 ##QUESTION 4: Make one more histogram of the population and add a new x-label, a new y-label, a new title (use ggtitle('my title')), and change the theme of the plot using theme_bw().
 
 ```{r}
-WorldCities %>% ggplot(aes(x = population)) + ylab( "Number of Countries") + ggtitle("World population") + geom_histogram()
+WorldCities %>% ggplot(aes(x = population)) + ylab( "Number of Countries") + ggtitle("World population") + geom_histogram() +theme_bw()
 ```
 
