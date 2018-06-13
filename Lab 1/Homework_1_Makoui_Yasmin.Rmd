@@ -1,68 +1,11 @@
 ---
-title: "CompSciX 415.2 Homework 1"
+title: "COMSCIX 415.2 Homework 1"
 author: "Yasmin Makoui"
-date: "6/12/2018"
+date: "6/13/2018"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-My Github repository for my assignment can be found at this URL: [https://github.com/yasi1362/CompScix-415-2-assignments](https://github.com/yasi1362/CompScix-415-2-assignments)
-
-
-```{r load_packages, warning=FALSE, message=FALSE}
-library(tidyverse)
-library(mdsr)
-```
-Lets look at some data:
-
-```{r}
-data(WorldCities)
-?WorldCities
-```
-##QUESTION 1: How many observations and variables are there in this data set? What are some of the variable names? Type up your answer in your document using complete sentences.
-
-The WorldCities data set includes 10 variables, such as:
-Code, name, latitude, longitude, country, country region, population, region code, region, date.
-
-Lets take a glimpseof the data:
-```{r}
-glimpse(WorldCities)
-```
-
-Lets extract part of the data:
-```{r}
-WorldCities <- head(WorldCities, 200)
-country_col <- WorldCities$country
-unique(country_col)
-```
-##QUESTION 2: There is a column called region in the data set. Can you extract this and show only the unique values?
-Unique values for country region:
-```{r}
-region_col <- WorldCities$region
-unique(region_col)
-```
-
-Extract data the tidy way:
-```{r}
-WorldCities %>% select(region) %>% head(5)
-```
-
-##QUESTION 3: Can you extract and show the unique entries from the country column in WorldCities using one line of code and two %>% operators?
-See Below:
-
-```{r}
-WorldCities %>% select(country) %>% unique()
-```
-
-#Visulize it:
-```{r}
-WorldCities %>% ggplot(aes(x = population)) + geom_histogram()
-```
-##QUESTION 4: Make one more histogram of the population and add a new x-label, a new y-label, a new title (use ggtitle('my title')), and change the theme of the plot using theme_bw().
-
-```{r}
-WorldCities %>% ggplot(aes(x = population)) + ylab( "Number of Countries") + ggtitle("World population") + geom_histogram() +theme_bw()
 ```
 
