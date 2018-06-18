@@ -8,3 +8,31 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r load_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+#> loading tidyverse: ggplot2
+#> loading tidyverse: tibble
+#> loading tidyverse: tidyr
+#> loading tidyverse: readr
+#> loading tidyverse: purrr
+#> loading tidyverse: dplyr
+#> Conflicts with tidy packages -------------------------------------------
+#> filter(): dplyr, stats
+#> lag(): dplyr, stats 
+```
+##Answers to questions 3.2.4 
+#1- By running ggplot(data = mpg) the following empty graph will appear: 
+```{r}
+ggplot(data = mpg)
+```
+
+#2- 234 rows and 11 variables are in mpg data set
+```{r}
+ggplot2::mpg
+?mpg
+```
+
+#3- drv variable are as follow: f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+
+#4- 
