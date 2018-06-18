@@ -35,4 +35,13 @@ ggplot2::mpg
 
 #3- drv variable are as follow: f = front-wheel drive, r = rear wheel drive, 4 = 4wd
 
-#4- 
+#4- See below for scatterplot of hwy and cyl:
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = cyl, y = hwy)) + theme_bw()
+```
+
+#5- See below for scatterplot of class and drv. The following graph is not really helpful because it does not show a specific corrolation between the class of the car and how the wheels work. This information can not be used to make a conclusion. 
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = class, y = drv)) + theme_bw()
+```
+
