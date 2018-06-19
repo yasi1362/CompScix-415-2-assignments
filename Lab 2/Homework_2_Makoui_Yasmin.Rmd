@@ -124,3 +124,22 @@ ggplot() + geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_smoo
 
 ###Answers to questions 3.7.1
 #####2- There are two types of bar charts: geom_bar makes the height of the bar proportional to the number of cases in each group (or if the weight aethetic is supplied, the sum of the weights). If you want the heights of the bars to represent values in the data, use geom_col instead. geom_bar uses stat_count by default: it counts the number of cases at each x position. geom_col uses stat_identity: it leaves the data as is.
+
+###The data science study charts analysis:
+
+#####The first chart for data scientists demand would have been so much more informative and easy to read if a bar chart would have been used. That way you can just take one look and find the results. Also it would have included information regarding the number of people on the study.
+
+#####The second chart for best source of new data science talent is a great choice, I can see that only 12% think today’s BI professionals are the best source of new data science talent.
+
+#####The 3rd chart could be also been more effective using a bar chart for the biggest obstacle to data science in organizations.
+
+#####The 4th chart is effective to show that most BI professionals studies business in comparison to data scientists.
+
+#####The 5th chart could also been shown as a bar chart or line chart to present for new technology increasing or decreasing demand for data scientists.
+
+#####The 6th chart is effective and shows the comparison of big data science and normal data science.
+
+#####The 7th chart is effective for the comparison of data scientist and BI professionals with regard to data life cycle.
+
+#####The last chart does not add to a 100%. I would use a line chart or a bar chart to show the % or instead use count of people used in the study.
+
