@@ -48,11 +48,11 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = class, y = drv)) + theme_bw()
 ###Answers to questions 3.3.1
 #####1- The color in the graph below is not blue because color = "blue" is inside the aesthetics parentheses. r doesn't recognize "blue" as a variable in this data set.
 ```{r}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = "blue")) + theme_bw()
 ```
 #####The following code will make the points blue.
 ```{r}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue") +theme_bw()
 ```
 
 #####2- Categorical variables are: manufacturer, model, trans, drv, fl, class
@@ -87,12 +87,16 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = class, color = cla
 ```{r}
 ?geom_point
 ggplot(mtcars, aes(wt, mpg)) +
-  geom_point(shape = 21, colour = "pink", fill = "blue", size = 5, stroke = 5) + theme_bw()
+  geom_point(shape = 21, colour = "blue", fill = "pink", size = 5, stroke = 2) + theme_bw()
 ```
 
 #####6- if you only map an aesthetic to something other than a variable name, R will respond with an error: geom_point requires the following missing aesthetics: x, y.
 
-
+###Answers to questions 3.5.1
+#####4- Advantages of using faceting is that we can break infomration to smaller pieces and get more details by categories. Disadvantages of faceting is that graphs dont tell one story about all the data. We can get lost in the details weithout reaching results. Also when working with big data, the number of graphs could be quite large, therefore not a useful way to get to a conclusion. 
 ```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
 ```
+
+#####5- In "facet_wrap"" "nrow"" means number of rows, and "ncol"" means number of columns. labeller is also a function makes it easy to assign different labellers to different factors. The labeller can be a function or it can be a named character vectors that will serve as a lookup table. "facet_grid" forms a matrix of panels defined by row and column facetting variables, so we can not modify columns and rows.
 
