@@ -21,8 +21,8 @@ library(tidyverse)
 #> filter(): dplyr, stats
 #> lag(): dplyr, stats 
 ```
-##Answers to questions 3.2.4 
-#1- By running ggplot(data = mpg) the following empty graph will appear: 
+###Answers to questions 3.2.4 
+#####1- By running ggplot(data = mpg) the following empty graph will appear: 
 ```{r}
 ggplot(data = mpg)
 ```
