@@ -77,3 +77,22 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, color = displ
 ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, size = displ)) +theme_bw() + ggtitle("With Continuous Variable - Size")
 ```
 
+#####4- When assigning the same variable to multiple aesthetics, the graph does not provide meaningful information. 
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, color = class)) +theme_bw() + ggtitle("With Continuous Variable - Color")
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = class, color = class)) +theme_bw() + ggtitle("With Continuous Variable - Color")
+```
+
+#####5- For shapes that have a border, you can colour the inside and the outside separately. Use the stroke aesthetic to modify the width of the border.
+```{r}
+?geom_point
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point(shape = 21, colour = "pink", fill = "blue", size = 5, stroke = 5) + theme_bw()
+```
+
+#####6- if you only map an aesthetic to something other than a variable name, R will respond with an error: geom_point requires the following missing aesthetics: x, y.
+
+
+```{r}
+```
+
