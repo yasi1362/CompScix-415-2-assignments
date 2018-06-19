@@ -45,9 +45,20 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = cyl, y = hwy)) + theme_bw()
 ggplot(data = mpg) + geom_point(mapping = aes(x = class, y = drv)) + theme_bw()
 ```
 
-###Answers to questions 3.3.1 
+###Answers to questions 3.3.1
 #####1- The color in the graph below is not blue because color = "blue" is inside the aesthetics parentheses. r doesn't recognize "blue" as a variable in this data set.
 ```{r}
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+#####The following code will make the points blue.
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+#####2- Categorical variables are: manufacturer, model, trans, drv, fl, class
+##### Continuous variables are: displ, year, cyl, cty, hwy
+##### you can find this information by typing ?mpg, or glimpse(mpg)
+```{r}
+glimpse(mpg)
 ```
 
