@@ -57,8 +57,23 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue
 
 #####2- Categorical variables are: manufacturer, model, trans, drv, fl, class
 ##### Continuous variables are: displ, year, cyl, cty, hwy
-##### you can find this information by typing ?mpg, or glimpse(mpg)
+##### You can find this information by typing ?mpg, or glimpse(mpg)
 ```{r}
 glimpse(mpg)
+```
+
+###3- The graph with catehorical variable is useful. There are useful corrolations in thise graphs:
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, color = trans)) +theme_bw() + ggtitle("With Categorical Variable - Color")
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, size = trans)) +theme_bw() + ggtitle("With Categorical Variable - Size")
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, shape = trans)) +theme_bw() + ggtitle("With Categorical Variable - Shape")
+
+```
+
+#####The graph with continuous variable is not useful. There are no useful corrolations in thise graphs: 
+#####Shape can not be assigned to a continuous variable - R will respond back with an error
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, color = displ)) +theme_bw() + ggtitle("With Continuous Variable - Color")
+ggplot(data = mpg) + geom_point(mapping = aes(x = class , y = cty, size = displ)) +theme_bw() + ggtitle("With Continuous Variable - Size")
 ```
 
