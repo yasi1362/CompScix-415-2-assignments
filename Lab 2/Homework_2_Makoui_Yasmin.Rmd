@@ -100,3 +100,25 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(
 
 #####5- In "facet_wrap"" "nrow"" means number of rows, and "ncol"" means number of columns. labeller is also a function makes it easy to assign different labellers to different factors. The labeller can be a function or it can be a named character vectors that will serve as a lookup table. "facet_grid" forms a matrix of panels defined by row and column facetting variables, so we can not modify columns and rows.
 
+###Answers to questions 3.6.1
+#####1- For line chart use geom_line, for boxplot chart use geom_boxplot, for a histogram chart use geom_histogram, for an area chart use geom_area.
+
+#####2- 
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + geom_point() + geom_smooth(se = FALSE)
+```
+
+#####3- "show.legend" is logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes.
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, color = drv), show.legend = FALSE) 
+```
+
+#####4- "se" display confidence interval around smooth, TRUE by default. 
+
+#####5- These graph look the same. The second code places maps the aesthetics twice for each geom, but the first code mapls the aesthetics once by including the mapping inside the ggplot function.
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point() + geom_smooth()
+
+ggplot() + geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+```
+
