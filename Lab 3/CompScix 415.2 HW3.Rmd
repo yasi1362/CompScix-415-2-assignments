@@ -101,4 +101,44 @@ filter(diamonds, carat > 3)
 ```
 
 ###Answers to Question in 5.2.4
-#####1- 
+#####1- Please see below codes:
+
+
+```{r}
+library(nycflights13)
+nycflights13::flights
+
+filter(flights, arr_delay >= 120 , arr_delay == NA)
+filter(flights, dest == "IAH" | dest == "HOU")
+filter(flights, carrier == "UA" | carrier == "AA", carrier == "DL")
+filter(flights, month == 7 | month == 8 | month == 9)
+filter(flights, arr_delay > 120, dep_delay == 0)
+filter(flights, dep_delay >= 60 & arr_delay < 30 )
+filter(flights, dep_time >= "0600" | dep_time <= "1200")
+```
+
+#####3-
+```{r}
+filter(flights, is.na(dep_time))
+```
+
+#####4- NA is a logical constant of length 1 which contains a missing value indicator. NA can be coerced to any other vector type except raw. There are also constants NA_integer_, NA_real_, NA_complex_ and NA_character_ of the other atomic vector types which support missing values: all of these are reserved words in the R language.
+```{r}
+?NA
+```
+
+
+###Answers to Question in 5.4.1
+#####1- Please see below codes:
+```{r}
+select(flights, dep_time, dep_delay, arr_time, arr_delay)
+select(flights, contains("time"), contains("delay"))
+
+```
+
+#####3- one_of() function allows you to select variables based on their names.
+```{r}
+?one_of()
+vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+```
+
