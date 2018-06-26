@@ -52,11 +52,4 @@ ggplot(mpg, aes(cty, hwy)) +
 ggplot(mpg, aes(cty, hwy)) +
  geom_jitter()
 ```
-#####4 Position adjustment, either as a string, or the result of a call to a position adjustment function.
-
-##### Defual position for boxplot is "dodge"
-```{r}
-?geom_boxplot
-ggplot(mpg, aes(class, hwy)) + geom_boxplot()
-```
 
