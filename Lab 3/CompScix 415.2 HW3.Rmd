@@ -26,7 +26,7 @@ library(tidyverse)
 #> lag(): dplyr, stats 
 ```
 
-###Answers to Question in 3.8
+###Answers to Question in 3.8.1
 #####1- It is difficult to see the mph in city and highway for each of these cars. we dont know what these cars are.
 ```{r}
 ggplot(data = mpg, mapping = aes (x = cty, y = hwy)) + geom_point()
@@ -58,5 +58,22 @@ ggplot(mpg, aes(cty, hwy)) +
 ```{r}
 ?geom_boxplot
 ggplot(mpg, aes(class, hwy)) + geom_boxplot()
+```
+
+###Answers to Question in 3.9.1
+#####2- Modify axis, legend, and plot labels. Good labels are critical for making your plots accessible to a wider audience. Ensure the axis and legend labels display the full variable name.
+```{r}
+?labs()
+ggplot(mtcars, aes(mpg, wt, colour = cyl)) + geom_point() + labs(colour = "Cylinders") + labs(x = "New x label")
+```
+#####4- geom_abline adds reference line (sometimes called rules) to a plot, either horizontal, vertical, or diagonal (specified by slope and intercept). These are useful for annotating plots. 
+#####fixed scale coordinate system forces a specified ratio between the physical representation of data units on the axes. The ratio represents the number of units on the y-axis equivalent to one unit on the x-axis. The default, ratio = 1, ensures that one unit on the x-axis is the same length as one unit on the y-axis. Ratios higher than one make units on the y axis longer than units on the x-axis, and vice versa. coord_fixed is important to get a better visual of the data when both axis have the same measurment
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point() +
+  geom_abline() +
+  coord_fixed()
+?geom_abline
+?coord_fixed
 ```
 
