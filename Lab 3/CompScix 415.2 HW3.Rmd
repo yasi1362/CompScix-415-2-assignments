@@ -44,7 +44,7 @@ ggplot(mpg, aes(cyl, hwy)) + geom_jitter(width = 0.25)
 ggplot(mpg, aes(cyl, hwy)) + geom_jitter(width = 0.55, height = 0.55)
 ```
 #####-3 "geom_count" is a variant geom_point that counts the number of observations at each location, then maps the count to point area. It useful when you have discrete data and overplotting. 
-##### The jitter geom is a convenient shortcut for geom_point(position = "jitter"). It adds a small amount of random variation to the location of each point, and is a useful way of handling overplotting caused by discreteness in smaller datasets. As you can see below geom_count reveals more information abojut overlapping data.
+#####The jitter geom is a convenient shortcut for geom_point(position = "jitter"). It adds a small amount of random variation to the location of each point, and is a useful way of handling overplotting caused by discreteness in smaller datasets. As you can see below geom_count reveals more information abojut overlapping data.
 ```{r}
 ?geom_count
 ggplot(mpg, aes(cty, hwy)) +
@@ -54,7 +54,7 @@ ggplot(mpg, aes(cty, hwy)) +
 ```
 #####4 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-##### Defual position for boxplot is "dodge"
+#####Defual position for boxplot is "dodge"
 ```{r}
 ?geom_boxplot
 ggplot(mpg, aes(class, hwy)) + geom_boxplot()
