@@ -136,9 +136,10 @@ select(flights, contains("time"), contains("delay"))
 
 ```
 
-#####3- one_of() function allows you to select variables based on their names..
+#####3- one_of() function allows you to select variables based on their names.
 ```{r}
 ?one_of()
 vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+select(flights, one_of(vars))
 ```
 
