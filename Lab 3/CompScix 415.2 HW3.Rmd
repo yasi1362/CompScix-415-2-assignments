@@ -27,13 +27,13 @@ library(tidyverse)
 ```
 
 ###Answers to Question in 3.8.1
-#####1- It is difficult to see the mph in city and highway for each of these cars. we dont know what these cars are.
+#####1- It is difficult to see the number of counts for mpg in city and highway for  of these cars. 
 ```{r}
 ggplot(data = mpg, mapping = aes (x = cty, y = hwy)) + geom_point()
 ```
-#####This graph gives more information about the corrolation of the cars and the mph
+#####This graph gives more information about the corrolation of the cars and the mpg in city and highways. 
 ```{r}
-ggplot(data = mpg, mapping = aes (x = cty,  fill = drv)) + geom_bar( position = "dodge")
+ggplot(data = mpg, mapping = aes (x = cty,  fill = hwy)) + geom_bar(position = "dodge")
 ```
 
 #####2- Width and height control the amount of jittering
