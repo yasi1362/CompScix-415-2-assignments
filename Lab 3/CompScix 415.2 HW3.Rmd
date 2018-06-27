@@ -31,9 +31,9 @@ library(tidyverse)
 ```{r}
 ggplot(data = mpg, mapping = aes (x = cty, y = hwy)) + geom_point()
 ```
-#####This graph gives more information about the corrolation of the cars and the mpg in city and highways. 
+#####This graph gives more information about the occurrence of the specific mpg for highway and city in certain area. 
 ```{r}
-ggplot(data = mpg, mapping = aes (x = cty,  fill = hwy)) + geom_bar(position = "dodge")
+ggplot(data = mpg, mapping = aes (x = cty,  y = hwy)) + geom_point(position = "jitter")
 ```
 
 #####2- Width and height control the amount of jittering
