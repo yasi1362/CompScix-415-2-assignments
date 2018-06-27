@@ -1,0 +1,31 @@
+---
+title: "CompSciX 415.2 HW4"
+author: "Yasmin Makoui"
+date: "6/26/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+###Baby Names
+```{r load_packages, warning=FALSE, message=FALSE}
+#import text file
+library(tidyverse)
+file_path_baby_names <- '/Users/yasminmakoui/downloads/baby_names.txt'
+baby_names_data <- read_delim(delim = '|', file = file_path_baby_names)
+
+#glimpse of imported text file
+glimpse(baby_names_data)
+
+#export csv file 
+write_csv(baby_names_data, path = '/Users/yasminmakoui/downloads/baby_names_two.csv')
+
+#import csv file
+file_path_baby_names_two <- '/Users/yasminmakoui/downloads/baby_names_two.csv'
+baby_names_two_data <- read_csv(file = file_path_baby_names_two)
+
+#glimpse csv file
+glimpse(baby_names_two_data)
+```
+
