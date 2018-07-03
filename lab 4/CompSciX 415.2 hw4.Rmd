@@ -55,9 +55,6 @@ by_day <- (flights %>% mutate(cancelled = (is.na(dep_delay) | is.na(arr_delay)))
   group_by(year, month, day) %>% 
   summarise(num_cancelled = sum(cancelled)))
 
-
-
-
 library(ggplot2)
 
 
@@ -70,4 +67,26 @@ ggplot(data = by_day, mapping = aes(x = month, y = num_cancelled)) +
 
 ```
 
+###Answers to 10.5
+#####1- mtcars print the row description as well
+```{r}
+print(mtcars)
+as_tibble(mtcars)
+```
+
+#####2- 
+```{r}
+df <- data.frame(abc = 1, xyz = "a")
+df$x
+df[, "xyz"]
+df[, c("abc", "xyz")]
+```
+```{r}
+vignette("tibble")
+tb <- tibble(
+  `1` = "abc",
+  `a` = "xyz"
+)
+tb
+```
 
