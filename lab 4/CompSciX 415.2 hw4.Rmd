@@ -49,4 +49,10 @@ not_cancelled %>% group_by(tailnum) %>%
   summarise(sum(distance))
 ```
 
-#####4- 
+#####4- Here are the observations of cancelled flights:
+```{r}
+
+```
+
+
+
