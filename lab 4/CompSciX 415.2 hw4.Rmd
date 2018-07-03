@@ -29,3 +29,24 @@ baby_names_two_data <- read_csv(file = file_path_baby_names_two)
 glimpse(baby_names_two_data)
 ```
 
+###Answers to section 5.6.7
+#####2- 
+```{r}
+library(tidyverse)
+library(nycflights13)
+not_cancelled <- flights %>% filter(!is.na(dep_delay), !is.na(arr_delay))
+
+not_cancelled %>% count(dest)
+
+not_cancelled %>% count(tailnum, wt = distance)
+```
+#####These codes show the same results as above without using count:
+```{r}
+not_cancelled %>% group_by(dest) %>%
+  summarise(n())
+
+not_cancelled %>% group_by(tailnum) %>%
+  summarise(sum(distance))
+```
+
+#####4- 

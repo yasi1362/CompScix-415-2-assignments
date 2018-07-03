@@ -158,6 +158,84 @@ glimpse(baby_names_two_data)</code></pre>
 ## $ n    &lt;int&gt; 7065, 2604, 2003, 1939, 1746, 1578, 1472, 1414, 1320, 128...
 ## $ prop &lt;dbl&gt; 0.072384329, 0.026679234, 0.020521700, 0.019865989, 0.017...</code></pre>
 </div>
+<div id="answers-to-section-5.6.7" class="section level3">
+<h3>Answers to section 5.6.7</h3>
+<div id="section" class="section level5">
+<h5>2-</h5>
+<pre class="r"><code>library(tidyverse)
+library(nycflights13)
+not_cancelled &lt;- flights %&gt;% filter(!is.na(dep_delay), !is.na(arr_delay))
+
+not_cancelled %&gt;% count(dest)</code></pre>
+<pre><code>## # A tibble: 104 x 2
+##    dest      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 ABQ     254
+##  2 ACK     264
+##  3 ALB     418
+##  4 ANC       8
+##  5 ATL   16837
+##  6 AUS    2411
+##  7 AVL     261
+##  8 BDL     412
+##  9 BGR     358
+## 10 BHM     269
+## # ... with 94 more rows</code></pre>
+<pre class="r"><code>not_cancelled %&gt;% count(tailnum, wt = distance)</code></pre>
+<pre><code>## # A tibble: 4,037 x 2
+##    tailnum      n
+##    &lt;chr&gt;    &lt;dbl&gt;
+##  1 D942DN    3418
+##  2 N0EGMQ  239143
+##  3 N10156  109664
+##  4 N102UW   25722
+##  5 N103US   24619
+##  6 N104UW   24616
+##  7 N10575  139903
+##  8 N105UW   23618
+##  9 N107US   21677
+## 10 N108UW   32070
+## # ... with 4,027 more rows</code></pre>
+</div>
+<div id="these-codes-show-the-same-results-as-above-without-using-count" class="section level5">
+<h5>These codes show the same results as above without using count:</h5>
+<pre class="r"><code>not_cancelled %&gt;% group_by(dest) %&gt;%
+  summarise(n())</code></pre>
+<pre><code>## # A tibble: 104 x 2
+##    dest  `n()`
+##    &lt;chr&gt; &lt;int&gt;
+##  1 ABQ     254
+##  2 ACK     264
+##  3 ALB     418
+##  4 ANC       8
+##  5 ATL   16837
+##  6 AUS    2411
+##  7 AVL     261
+##  8 BDL     412
+##  9 BGR     358
+## 10 BHM     269
+## # ... with 94 more rows</code></pre>
+<pre class="r"><code>not_cancelled %&gt;% group_by(tailnum) %&gt;%
+  summarise(sum(distance))</code></pre>
+<pre><code>## # A tibble: 4,037 x 2
+##    tailnum `sum(distance)`
+##    &lt;chr&gt;             &lt;dbl&gt;
+##  1 D942DN             3418
+##  2 N0EGMQ           239143
+##  3 N10156           109664
+##  4 N102UW            25722
+##  5 N103US            24619
+##  6 N104UW            24616
+##  7 N10575           139903
+##  8 N105UW            23618
+##  9 N107US            21677
+## 10 N108UW            32070
+## # ... with 4,027 more rows</code></pre>
+</div>
+<div id="section-1" class="section level5">
+<h5>4-</h5>
+</div>
+</div>
 
 
 
