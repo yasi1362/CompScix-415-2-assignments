@@ -51,8 +51,23 @@ not_cancelled %>% group_by(tailnum) %>%
 
 #####4- Here are the observations of cancelled flights:
 ```{r}
+by_day <- (flights %>% mutate(cancelled = (is.na(dep_delay) | is.na(arr_delay))) %>%
+  group_by(year, month, day) %>% 
+  summarise(num_cancelled = sum(cancelled)))
 
+
+
+
+library(ggplot2)
+
+
+ggplot(data = by_day, mapping = aes(x = month, y = num_cancelled)) + 
+  geom_jitter() + geom_smooth()
 ```
 
+```{r}
+?sort
+
+```
 
 
