@@ -74,7 +74,7 @@ print(mtcars)
 as_tibble(mtcars)
 ```
 
-#####2- 
+#####2- tibble will automatically recycle inputs of lenght 1, and allows you to refer to variables that you just created. to create a table in dataframes we need to write longer codes since data frames dont work like tibble.
 ```{r}
 df <- data.frame(abc = 1, xyz = "a")
 df$x
@@ -90,3 +90,15 @@ tb <- tibble(
 tb
 ```
 
+#####3 - using the as.tbble function you can extract variables as tibble
+```{r}
+aaa <- "mpg"
+
+as.tibble(aaa)
+```
+
+#####6 - You can control the default appearance with options:
+
+#####options(tibble.print_max = n, tibble.print_min = m): if there are more than n rows, print only the first m rows. Use options(tibble.print_max = Inf) to always show all rows.
+
+#####options(tibble.width = Inf) will always print all columns, regardless of the width of the screen.
