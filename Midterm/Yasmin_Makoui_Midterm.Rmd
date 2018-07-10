@@ -126,6 +126,8 @@ ggplot(data = diamonds) +
 
 ###Q3
 ####The previous graphic is not very useful. We can make it much more useful by changing one thing about it. Make the change and plot it again.
+
+#####The previous graph was not really clear on the colors since some where overlapping. Position "dodge" will seperate each color category.
 ```{r}
 ?geom_boxplot
 ggplot(data = diamonds) +
