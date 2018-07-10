@@ -343,6 +343,81 @@ my_vector</code></pre>
 </div>
 <div id="data-importexport" class="section level2">
 <h2>Data import/export</h2>
+<div id="q1-2" class="section level3">
+<h3>Q1</h3>
+<div id="download-the-rail_trail.txt-file-from-canvas-in-the-midterm-exam-section-and-successfully-import-it-into-r.-prove-that-it-was-imported-successfully-by-including-your-import-code-and-taking-a-glimpse-of-the-result." class="section level4">
+<h4>1. Download the rail_trail.txt file from Canvas (in the Midterm Exam section) and successfully import it into R. Prove that it was imported successfully by including your import code and taking a glimpse of the result.</h4>
+<pre class="r"><code>#import text file
+file_path_rail_trail_txt &lt;- '/Users/yasminmakoui/downloads/rail_trail.txt'
+rail_trail_data &lt;- read_delim(delim = '|', file = file_path_rail_trail_txt)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   hightemp = col_integer(),
+##   lowtemp = col_integer(),
+##   avgtemp = col_double(),
+##   spring = col_integer(),
+##   summer = col_integer(),
+##   fall = col_integer(),
+##   cloudcover = col_double(),
+##   precip = col_double(),
+##   volume = col_integer(),
+##   weekday = col_integer()
+## )</code></pre>
+<pre class="r"><code>#glimpse of imported text file
+glimpse(rail_trail_data)</code></pre>
+<pre><code>## Observations: 90
+## Variables: 10
+## $ hightemp   &lt;int&gt; 83, 73, 74, 95, 44, 69, 66, 66, 80, 79, 78, 65, 41,...
+## $ lowtemp    &lt;int&gt; 50, 49, 52, 61, 52, 54, 39, 38, 55, 45, 55, 48, 49,...
+## $ avgtemp    &lt;dbl&gt; 66.5, 61.0, 63.0, 78.0, 48.0, 61.5, 52.5, 52.0, 67....
+## $ spring     &lt;int&gt; 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, ...
+## $ summer     &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, ...
+## $ fall       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, ...
+## $ cloudcover &lt;dbl&gt; 7.6, 6.3, 7.5, 2.6, 10.0, 6.6, 2.4, 0.0, 3.8, 4.1, ...
+## $ precip     &lt;dbl&gt; 0.00, 0.29, 0.32, 0.00, 0.14, 0.02, 0.00, 0.00, 0.0...
+## $ volume     &lt;int&gt; 501, 419, 397, 385, 200, 375, 417, 629, 533, 547, 4...
+## $ weekday    &lt;int&gt; 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, ...</code></pre>
+</div>
+</div>
+<div id="q2-2" class="section level3">
+<h3>Q2</h3>
+<div id="export-the-file-into-a-comma-separated-file-and-name-it-rail_trail.csv.-make-sure-you-define-the-path-correctly-so-that-you-know-where-it-gets-saved.-then-reload-the-file.-include-your-export-and-import-code-and-take-another-glimpse." class="section level4">
+<h4>Export the file into a comma-separated file and name it “rail_trail.csv”. Make sure you define the path correctly so that you know where it gets saved. Then reload the file. Include your export and import code and take another glimpse.</h4>
+<pre class="r"><code>#export csv file 
+write_csv(rail_trail_data, path = '/Users/yasminmakoui/downloads/rail_trail.csv')
+
+#import csv file
+file_path_rail_trail_csv &lt;- '/Users/yasminmakoui/downloads/rail_trail.csv'
+rail_trail_data_csv &lt;- read_csv(file = file_path_rail_trail_csv)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   hightemp = col_integer(),
+##   lowtemp = col_integer(),
+##   avgtemp = col_double(),
+##   spring = col_integer(),
+##   summer = col_integer(),
+##   fall = col_integer(),
+##   cloudcover = col_double(),
+##   precip = col_double(),
+##   volume = col_integer(),
+##   weekday = col_integer()
+## )</code></pre>
+<pre class="r"><code>#glimpse csv file
+glimpse(rail_trail_data_csv)</code></pre>
+<pre><code>## Observations: 90
+## Variables: 10
+## $ hightemp   &lt;int&gt; 83, 73, 74, 95, 44, 69, 66, 66, 80, 79, 78, 65, 41,...
+## $ lowtemp    &lt;int&gt; 50, 49, 52, 61, 52, 54, 39, 38, 55, 45, 55, 48, 49,...
+## $ avgtemp    &lt;dbl&gt; 66.5, 61.0, 63.0, 78.0, 48.0, 61.5, 52.5, 52.0, 67....
+## $ spring     &lt;int&gt; 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, ...
+## $ summer     &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, ...
+## $ fall       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, ...
+## $ cloudcover &lt;dbl&gt; 7.6, 6.3, 7.5, 2.6, 10.0, 6.6, 2.4, 0.0, 3.8, 4.1, ...
+## $ precip     &lt;dbl&gt; 0.00, 0.29, 0.32, 0.00, 0.14, 0.02, 0.00, 0.00, 0.0...
+## $ volume     &lt;int&gt; 501, 419, 397, 385, 200, 375, 417, 629, 533, 547, 4...
+## $ weekday    &lt;int&gt; 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, ...</code></pre>
+</div>
+</div>
 </div>
 
 

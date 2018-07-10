@@ -82,3 +82,29 @@ my_vector
 ```
 
 ##Data import/export
+###Q1
+####1. Download the rail_trail.txt file from Canvas (in the Midterm Exam section) and successfully import it into R. Prove that it was imported successfully by including your import code and taking a glimpse of the result.
+```{r}
+#import text file
+file_path_rail_trail_txt <- '/Users/yasminmakoui/downloads/rail_trail.txt'
+rail_trail_data <- read_delim(delim = '|', file = file_path_rail_trail_txt)
+
+#glimpse of imported text file
+glimpse(rail_trail_data)
+```
+
+
+###Q2
+####Export the file into a comma-separated file and name it “rail_trail.csv”. Make sure you define the path correctly so that you know where it gets saved. Then reload the file. Include your export and import code and take another glimpse.
+```{r}
+#export csv file 
+write_csv(rail_trail_data, path = '/Users/yasminmakoui/downloads/rail_trail.csv')
+
+#import csv file
+file_path_rail_trail_csv <- '/Users/yasminmakoui/downloads/rail_trail.csv'
+rail_trail_data_csv <- read_csv(file = file_path_rail_trail_csv)
+
+#glimpse csv file
+glimpse(rail_trail_data_csv)
+```
+
