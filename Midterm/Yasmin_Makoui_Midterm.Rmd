@@ -108,3 +108,11 @@ rail_trail_data_csv <- read_csv(file = file_path_rail_trail_csv)
 glimpse(rail_trail_data_csv)
 ```
 
+##Visualization
+###Q1
+####Critique the graphic provided in midterm: give only three examples of what is wrong with this graphic. Be concise.
+  1. The size of the circles do not represent the percentages. For example for women category the circle for the 20% is much smaller than the 72%, and it could be misleading.
+  2. Each category does not add up to 100%.
+  3. This visual does not show the total population in the study or the numbers of each category that participated in the study. The data could be skewed depending on who participate in this study.
+  
+  
