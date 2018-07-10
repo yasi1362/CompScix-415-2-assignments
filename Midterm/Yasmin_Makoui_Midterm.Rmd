@@ -2,9 +2,83 @@
 title: "COMPSCIX 415.2 Homework 5/Midterm"
 author: "Yasmin Makoui"
 date: "7/10/2018"
-output: html_document
+output: 
+  html_document: 
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r load_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(mdsr)
+```
+
+My Github repository for my midterm can be found at this URL: [https://github.com/yasi1362/CompScix-415-2-assignments/tree/master/Midterm](https://github.com/yasi1362/CompScix-415-2-assignments/tree/master/Midterm)
+
+##The tidyverse packages
+###Q1 
+####Can you name which package is associated with each task below?
+######Plotting - ggplot2
+######Data munging/wrangling - dplyr 
+######Reshaping(spreading & gathering) data - tidyr
+######Importing/exporting data - readr
+
+###Q2 
+####Now can you name two functions that you’ve used from each package that you listed above for these tasks?
+######Plotting: 
+  * geom function -> geom_point()
+  * theme function -> theme_bw()
+  
+######Data munging/wrangling:
+  * summarise()
+  * filter()
+
+######Reshaping data:
+  * gather()
+  * spread()
+
+######Importing/exporting data:
+  * read_csv()
+  * read_delim()
+
+##R Basics
+###Q1
+####Fix this code with the fewest number of changes possible so it works:
+#####My_data.name___is.too00ooLong! <- c( 1 , 2 , 3 )
+
+#####! can not be used to name a variable
+  
+```{r}
+My_data.name___is.too00ooLong <- c( 1 , 2 , 3 )
+My_data.name___is.too00ooLong
+```
+###Q2
+####Fix this code so it works:
+#####my_string <- C('has', 'an', 'error', 'in', 'it)
+
+##### c should not be capitalized, and the closing ' was missing for "it"
+  
+```{r}
+my_string <- c('has', 'an', 'error', 'in', 'it')
+my_string
+```
+
+###Q3
+####Look at the code below and comment on what happened to the values in the vector.
+#####my_vector <- c(1, 2, '3', '4', 5)
+#####my_vector
+##### [1] "1" "2" "3" "4" "5"
+
+#####Since number 3 and 4 were inside quotes the values changed from numbers to characters. To keep the values as numbers we should not include the quotes around numbers.
+```{r}
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector
+```
+
+##Data import/export
