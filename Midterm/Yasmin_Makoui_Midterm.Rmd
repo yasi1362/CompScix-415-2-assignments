@@ -115,4 +115,20 @@ glimpse(rail_trail_data_csv)
   2. Each category does not add up to 100%.
   3. This visual does not show the total population in the study or the numbers of each category that participated in the study. The data could be skewed depending on who participate in this study.
   
-  
+###Q2
+####Reproduce this graphic using the diamonds data set.
+#####See below:
+```{r}
+ggplot(data = diamonds) +
+  geom_boxplot(mapping = aes(x = cut, y = carat, fill = color), position = "identity") + xlab("CUT OF DIAMOND") + ylab("CARAT OF DIAMOND") +
+  coord_flip() 
+```
+
+###Q3
+####The previous graphic is not very useful. We can make it much more useful by changing one thing about it. Make the change and plot it again.
+```{r}
+ggplot(data = diamonds) +
+  geom_boxplot(mapping = aes(x = cut, y = carat, fill = color), position = "identity") + xlab("CUT OF DIAMOND") + ylab("CARAT OF DIAMOND") +
+  coord_flip() 
+```
+
