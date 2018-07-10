@@ -127,8 +127,9 @@ ggplot(data = diamonds) +
 ###Q3
 ####The previous graphic is not very useful. We can make it much more useful by changing one thing about it. Make the change and plot it again.
 ```{r}
+?geom_boxplot
 ggplot(data = diamonds) +
-  geom_boxplot(mapping = aes(x = cut, y = carat, fill = color), position = "identity") + xlab("CUT OF DIAMOND") + ylab("CARAT OF DIAMOND") +
+  geom_boxplot(mapping = aes(x = cut, y = carat, fill = color ), position = "dodge") + xlab("CUT OF DIAMOND") + ylab("CARAT OF DIAMOND") +
   coord_flip() 
 ```
 
