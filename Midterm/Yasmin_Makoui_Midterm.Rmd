@@ -135,3 +135,14 @@ ggplot(data = diamonds) +
   coord_flip() 
 ```
 
+##Data munging and wrangling
+###Q1
+####Is this data “tidy”? If yes, leave it alone and go to the next problem. If no, make it tidy. Note: this data set is called table2 and is available in the tidyverse package. It should be ready for you to use after you’ve loaded the tidyverse package.
+
+#####This data is not tidy since the cases and population are in the same column and the count for each are not seperated. We can tidy the table by usind a spread function to seperate cases and population counts.
+```{r}
+table2
+
+spread(table2, key = type, value = count)
+```
+
