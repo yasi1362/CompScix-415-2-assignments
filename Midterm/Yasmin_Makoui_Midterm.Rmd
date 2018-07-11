@@ -146,3 +146,20 @@ table2
 spread(table2, key = type, value = count)
 ```
 
+###Q2
+####Create a new column in the diamonds data set called price_per_carat that shows the price of each diamond per carat (hint: divide). Only show me the code, not the output
+
+> diamonds %>% mutate(price_per_carat = price/carat)
+
+###Q3
+####For each cut of diamond in the diamonds data set, how many diamonds, and what proportion, have a price > 10000 and a carat < 1.5? There are several ways to get to an answer, but your solution must use the data wrangling verbs from the tidyverse in order to get credit.
+  * Do the results make sense? Why?
+  * Do we need to be wary of any of these numbers? Why?
+  
+```{r}
+
+```
+
+  
+
+
