@@ -160,6 +160,27 @@ spread(table2, key = type, value = count)
 
 ```
 
-  
+##EDA
+###Q1
+####During what time period is this data from?
+
+###Q2
+####How many cities are represented?
+
+###Q3
+####Which city, month and year had the highest number of sales?
+
+###Q4
+####What kind of relationship do you think exists between the number of listings and the number of sales? Check your assumption and show your work.
+
+###Q5
+####What proportion of sales is missing for each city?
+
+###Q6
+####Looking at only the cities and months with greater than 500 sales:
+  * Are the distributions of the median sales price (column name median), when grouped by city, different? The same? Show your work.
+  * Any cities that stand out that you’d want to investigate further?
+  * Why might we want to filter out all cities and months with sales less than 500?
+
 
 
