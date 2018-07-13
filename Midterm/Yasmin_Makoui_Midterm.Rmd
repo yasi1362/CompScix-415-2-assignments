@@ -153,11 +153,28 @@ spread(table2, key = type, value = count)
 
 ###Q3
 ####For each cut of diamond in the diamonds data set, how many diamonds, and what proportion, have a price > 10000 and a carat < 1.5? There are several ways to get to an answer, but your solution must use the data wrangling verbs from the tidyverse in order to get credit.
-  * Do the results make sense? Why?
-  * Do we need to be wary of any of these numbers? Why?
+  * Do the results make sense? Why? Yes, based on the total population and the graph below, most of the diamonds with price abouve $10,000 are bigger that 1.5 carat.
+  * Do we need to be wary of any of these numbers? Why? I think this data should be reliable. 
+  
+#####There are 834 diamonds over $10,000 that are smaller than 1.5 carats in the diamond data set
+
+#####there are 53940 observations in this data set, and the poroportaion of small diamonds to the total population is about 1.5%
   
 ```{r}
+expensive_diamonds <- filter( diamonds, price > 10000,  carat < 1.5)
+count(expensive_diamonds)
+count(diamonds)
 
+Diamonds_ratio <- (count(expensive_diamonds) / count(diamonds))
+
+Diamonds_ratio
+
+ggplot(data = diamonds, mapping = aes(x = carat, y = price) ) + 
+         geom_point() + geom_smooth()
+
+
+ggplot(data = expensive_diamonds, mapping = aes(x = carat, y = price) ) + 
+         geom_point() + geom_smooth()
 ```
 
 ##EDA
