@@ -511,12 +511,14 @@ ggplot(data = diamonds) +
 <div id="for-each-cut-of-diamond-in-the-diamonds-data-set-how-many-diamonds-and-what-proportion-have-a-price-10000-and-a-carat-1.5-there-are-several-ways-to-get-to-an-answer-but-your-solution-must-use-the-data-wrangling-verbs-from-the-tidyverse-in-order-to-get-credit." class="section level4">
 <h4>For each cut of diamond in the diamonds data set, how many diamonds, and what proportion, have a price &gt; 10000 and a carat &lt; 1.5? There are several ways to get to an answer, but your solution must use the data wrangling verbs from the tidyverse in order to get credit.</h4>
 <ul>
-<li>Do the results make sense? Why?</li>
-<li>Do we need to be wary of any of these numbers? Why?</li>
+<li>Do the results make sense? Why? Yes, based on the total population and the graph below, most of the diamonds with price abouve $10,000 are bigger that 1.5 carat.</li>
+<li>Do we need to be wary of any of these numbers? Why? I think this data should be reliable.</li>
 </ul>
 <div id="there-are-834-diamonds-over-10000-that-are-smaller-than-1.5-carats-in-the-diamond-data-set" class="section level5">
 <h5>There are 834 diamonds over $10,000 that are smaller than 1.5 carats in the diamond data set</h5>
-<p>there are 53940 observations in this data set, and the poroportaion of small diamonds to the total population is about 1.5%</p>
+</div>
+<div id="there-are-53940-observations-in-the-diamonds-data-set-and-the-poroportaion-of-small-diamonds-to-the-total-population-is-about-1.5" class="section level5">
+<h5>There are 53,940 observations in the diamonds data set, and the poroportaion of small diamonds to the total population is about 1.5%</h5>
 <pre class="r"><code>expensive_diamonds &lt;- filter( diamonds, price &gt; 10000,  carat &lt; 1.5)
 count(expensive_diamonds)</code></pre>
 <pre><code>## # A tibble: 1 x 1
