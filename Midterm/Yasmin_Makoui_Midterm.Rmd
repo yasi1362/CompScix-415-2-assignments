@@ -180,25 +180,87 @@ ggplot(data = expensive_diamonds, mapping = aes(x = carat, y = price) ) +
 ##EDA
 
 ###Q1
-####During what time period is this data from?
+####During what time period is this data from? 2000 - 2015
+
+
+```{r}
+years <- txhousing %>% select(year) %>% group_by(year)
+
+summarise(years)
+```
 
 ###Q2
-####How many cities are represented?
+####How many cities are represented? 46 cities
+
+```{r}
+cities <- group_by(count(txhousing, city))
+
+cities
+```
 
 ###Q3
-####Which city, month and year had the highest number of sales?
+####Which city, month and year had the highest number of sales? Houston in July 2015 had the highest sales of 8945.
+
+```{r}
+subset <- txhousing %>% select(city, month, year, sales)
+
+arrange(subset, desc(sales))
+```
 
 ###Q4
-####What kind of relationship do you think exists between the number of listings and the number of sales? Check your assumption and show your work.
+####What kind of relationship do you think exists between the number of listings and the number of sales? Check your assumption and show your work. 
+
+#####There is a positive relationship between number of sales and number of listings. The higher the number of listings in average the higher number of sales.
+
+```{r}
+ggplot(txhousing, mapping = aes(x = listings, y = sales)) +
+  geom_jitter() + geom_smooth()
+```
+
 
 ###Q5
 ####What proportion of sales is missing for each city?
 
+```{r}
+missing_sales <- txhousing %>% filter(is.na(sales)) 
+count(missing_sales)
+
+
+txhousing %>% mutate(missingsales = (is.na(sales))) %>% 
+  group_by(city) %>%
+  summarize(num_missingsales = sum(missingsales), 
+            num_sales = sum(sales, na.rm = TRUE),
+            prop_missing = num_missingsales/num_sales)
+```
+
+
 ###Q6
 ####Looking at only the cities and months with greater than 500 sales:
-  * Are the distributions of the median sales price (column name median), when grouped by city, different? The same? Show your work.
-  * Any cities that stand out that you’d want to investigate further?
-  * Why might we want to filter out all cities and months with sales less than 500?
+  * Are the distributions of the median sales price (column name median), when grouped by city, different? The same? Show your work. There is no difference
+  
 
+```{r}
+txhousing_sales_over <- filter(txhousing, sales > 500)
 
+txhousing_sales_over %>% mutate(sales_over = (sales > 500)) %>%
+  group_by(city, month, year, median) %>%
+  summarize(total_sales = sum(sales, na.rm = TRUE), 
+            new_median = median(median, na.rm = TRUE),
+            difference = new_median - median)
+```
+  * Any cities that stand out that you’d want to investigate further? i would like to investigate more about city of Houston, since it has the highest sales across the board.
 
+```{r}
+txhousing_sales_over <- filter(txhousing, sales > 500)
+
+txhousing_sales_over %>% mutate(sales_over = (sales > 500)) %>%
+  group_by(city) %>%
+  summarize(total_sales = sum(sales, na.rm = TRUE), 
+            new_median = median(median, na.rm = TRUE),
+            ) %>% arrange(desc(total_sales))
+```
+
+  * Why might we want to filter out all cities and months with sales less than 500? When we want to know the strongest value and derivers of sales we would want to filter out the not significant observations.
+  
+  
+  
