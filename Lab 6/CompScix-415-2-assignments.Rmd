@@ -2,7 +2,12 @@
 title: "CompSciX 415.2 Homework 6"
 author: "Yasmin Makoui"
 date: "7/17/2018"
-output: html_document
+output: 
+  html_document: 
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
 ---
 
 ```{r setup, include=FALSE}
@@ -12,5 +17,32 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_packages, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(mdsr)
+library(mosaicData)
+```
+
+###1. What variables are in this data set?
+  * outcome 
+  * smoker
+  * age
+
+###2. How many observations are there and what does each represent? 
+#####There are 1,314 observations on women who were classified as current smokers or as never having smoked. Each observation has represts the following:
+  * outcome: survival status after 20 years: a factor with levels Alive Dead
+  * smoker: smoking status at baseline: a factor with levels No Yes
+  * age: age (in years) at the time of the first survey
+
+###3. Create a table (use the R code below as a guide) and a visualization of the relationship between smoking status and outcome, ignoring age. What do you see? Does it make sense? 
+```{r}
+library(mosaicData)
+library(tidyverse)
+Whickham %>% count(smoker,outcome)
+ggplot(Whickham, mapping = aes(x = smoker, fill = outcome)) + geom_bar()
+```
+
+4. Recode the age variable into an ordered factor with three categories: age <= 44, age > 44 & age <=
+64, and age > 64. Now, recreate visualization from above, but facet on your new age factor. What do
+you see? Does it make sense?
+```{r}
+
 ```
 
