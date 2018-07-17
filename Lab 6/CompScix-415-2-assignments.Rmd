@@ -1,0 +1,16 @@
+---
+title: "CompSciX 415.2 Homework 6"
+author: "Yasmin Makoui"
+date: "7/17/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(mdsr)
+```
+
