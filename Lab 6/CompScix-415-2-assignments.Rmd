@@ -20,18 +20,23 @@ library(mdsr)
 library(mosaicData)
 ```
 
-###1. What variables are in this data set?
+##Exercise 1
+###Q1
+####What variables are in this data set?
   * outcome 
   * smoker
   * age
 
-###2. How many observations are there and what does each represent? 
+###Q2
+####How many observations are there and what does each represent? 
 #####There are 1,314 observations on women who were classified as current smokers or as never having smoked. Each observation has represts the following:
   * outcome: survival status after 20 years: a factor with levels Alive Dead
   * smoker: smoking status at baseline: a factor with levels No Yes
   * age: age (in years) at the time of the first survey
 
-###3. Create a table (use the R code below as a guide) and a visualization of the relationship between smoking status and outcome, ignoring age. What do you see? Does it make sense? 
+###Q3 
+####Create a table (use the R code below as a guide) and a visualization of the relationship between smoking status and outcome, ignoring age. What do you see? Does it make sense? 
+#####A tibble with 4 x 3 that shows the number of women who are alive or dead after 20 years depending on their smoking status. The tibble is not as informative because the proportion of dead women who don't smoke relative to the women who did smoke are is bigger, and it's not following expectations.
 ```{r}
 library(mosaicData)
 library(tidyverse)
@@ -39,10 +44,17 @@ Whickham %>% count(smoker,outcome)
 ggplot(Whickham, mapping = aes(x = smoker, fill = outcome)) + geom_bar()
 ```
 
-4. Recode the age variable into an ordered factor with three categories: age <= 44, age > 44 & age <=
-64, and age > 64. Now, recreate visualization from above, but facet on your new age factor. What do
-you see? Does it make sense?
+###Q4
+####Recode the age variable into an ordered factor with three categories: age <= 44, age > 44 & age <= 64, and age > 64. Now, recreate visualization from above, but facet on your new age factor. What do you see? Does it make sense? 
+
 ```{r}
+whickham_age_fct <-Whickham %>% mutate(age_fct = case_when(age <= 44 ~ '44 and younger',
+                                                     age > 44 & age <= 64 ~ 'Older than 44 to 64',
+                                                     age > 64 ~ 'Older than 64'))
+
+as_tibble(whickham_age_fct)
+
+whickham_age_fct %>% ggplot(mapping = aes(x = smoker, fill = outcome)) +
+  geom_bar() + facet_wrap(~ age_fct)
 
 ```
-
