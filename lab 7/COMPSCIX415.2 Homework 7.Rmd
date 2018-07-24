@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_packages, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(mdsr)
+library(broom)
 ```
 
 ##Exercise 1
@@ -38,8 +39,25 @@ glimpse(train_data)
 ####Our target will be SalePrice.
 
   *Visualize the distribution of SalePrice.
+```{r}
+ggplot(data = train_data, mapping = aes(x = SalePrice)) + 
+  geom_histogram()
+```
+  
+
   *Visualize the covariation between SalePrice and Neighborhood.
+```{r}
+ggplot(data = train_data, mapping = aes(x = Neighborhood, y = SalePrice)) + 
+  geom_boxplot() + coord_flip()
+```
+
+  
   *Visualize the covariation between SalePrice and OverallQual.
+```{r}
+ggplot(data = train_data, mapping = aes(x = OverallQual, y = SalePrice)) + 
+  geom_boxplot()
+```
+
   
 ##Exercise 3
 ####Our target is called SalePrice. First, we can fit a simple regression model consisting of only the intercept (the average of SalePrice). Fit the model and then use the broom package to
