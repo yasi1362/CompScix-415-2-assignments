@@ -60,11 +60,7 @@ ggplot(data = train_data, mapping = aes(x = OverallQual, y = SalePrice)) +
 
   
 ##Exercise 3
-####Our target is called SalePrice. First, we can fit a simple regression model consisting of only the intercept (the average of SalePrice). Fit the model and then use the broom package to
-
-take a look at the coefficient,
-compare the coefficient to the average value of SalePrice, and
-take a look at the R-squared.
+####Our target is called SalePrice. First, we can fit a simple regression model consisting of only the intercept (the average of SalePrice). Fit the model and then use the broom package to take a look at the coefficient, compare the coefficient to the average value of SalePrice, and take a look at the R-squared.
 
 ##Exercise 4
 ####Now fit a linear regression model using GrLivArea, OverallQual, and Neighborhood as the features. Don’t forget to look at  data_description.txt to understand what these variables mean. Ask yourself these questions before fitting the model:
