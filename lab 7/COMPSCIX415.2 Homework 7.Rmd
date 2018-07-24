@@ -43,7 +43,6 @@ glimpse(train_data)
 ggplot(data = train_data, mapping = aes(x = SalePrice)) + 
   geom_histogram()
 ```
-  
 
   *Visualize the covariation between SalePrice and Neighborhood.
 ```{r}
@@ -54,38 +53,130 @@ ggplot(data = train_data, mapping = aes(x = Neighborhood, y = SalePrice)) +
   
   *Visualize the covariation between SalePrice and OverallQual.
 ```{r}
-ggplot(data = train_data, mapping = aes(x = OverallQual, y = SalePrice)) + 
-  geom_boxplot()
+ggplot(data = train_data, mapping = aes(x = SalePrice, y = OverallQual)) + 
+  geom_point()
 ```
 
   
 ##Exercise 3
 ####Our target is called SalePrice. First, we can fit a simple regression model consisting of only the intercept (the average of SalePrice). Fit the model and then use the broom package to take a look at the coefficient, compare the coefficient to the average value of SalePrice, and take a look at the R-squared.
 
+```{r}
+n <- 1000 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  train_samp <- train_data %>% sample_n(1000) # random sample
+  train_samp_lm <- lm(SalePrice ~ Neighborhood, data = train_samp)
+  slopes[i] <- coef(train_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+
+(train_lm <- lm(formula = SalePrice ~ Neighborhood, data = train_data))
+
+library(broom)
+tidy(train_lm)
+```
+```{r}
+n <- 1000 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  train_samp <- train_data %>% sample_n(1000) # random sample
+  train_samp_lm <- lm(SalePrice ~ OverallQual, data = train_samp)
+  slopes[i] <- coef(train_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+
+(train_lm <- lm(formula = SalePrice ~ OverallQual, data = train_data))
+
+tidy(train_lm)
+```
+
+
 ##Exercise 4
 ####Now fit a linear regression model using GrLivArea, OverallQual, and Neighborhood as the features. Don’t forget to look at  data_description.txt to understand what these variables mean. Ask yourself these questions before fitting the model:
 
-What kind of relationship will these features have with our target?
-Can the relationship be estimated linearly?
-Are these good features, given the problem we are trying to solve?
-After fitting the model, output the coefficients and the R-squared using the broom package.
+  * What kind of relationship will these features have with our target?
+  * Can the relationship be estimated linearly?
+  * Are these good features, given the problem we are trying to solve?
+  * After fitting the model, output the coefficients and the R-squared using the broom package.
+  
+```{r}
+(train_modify_lm <- lm(formula = SalePrice ~ OverallQual + GrLivArea + Neighborhood, data = train_data))
+tidy(train_modify_lm)
+```
 
 Answer these questions:
 
-How would you interpret the coefficients on GrLivArea and OverallQual?
-How would you interpret the coefficient on NeighborhoodBrkSide?
-Are the features significant?
-Are the features practically significant?
-Is the model a good fit?
+  * How would you interpret the coefficients on GrLivArea and OverallQual? OverallQual is better 
+
+```{r}
+(train_ga_lm <- lm(formula = SalePrice ~ GrLivArea, data = train_data))
+tidy(train_ga_lm)
+```
+
+```{r}
+(train_oq_lm <- lm(formula = SalePrice ~ OverallQual, data = train_data))
+tidy(train_oq_lm)
+```
+
+  * How would you interpret the coefficient on NeighborhoodBrkSide? the price is not changing much 
+  * Are the features significant? OverallQual is 
+  * Are the features practically significant? Yes
+  * Is the model a good fit? Yes
 
 
 ##Exercise 5 (OPTIONAL - won’t be graded)
 ####Feel free to play around with linear regression. Add some other features and see how the model results change.
+```{r}
+
+n <- 1200 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  train_oq_samp <- train_data %>% sample_n(1200) # random sample
+  train_oq_samp_lm <- lm(SalePrice ~ OverallQual, data = train_oq_samp)
+  slopes[i] <- coef(train_oq_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+
+(oq_lm <- lm(formula = SalePrice ~ OverallQual, data = train_data))
+
+tidy(oq_lm)
+```
+
 
 ##Exercise 6
 ####One downside of the linear model is that it is sensitive to unusual values because the distance incorporates a squared term. Fit a linear model to the simulated data below (use y as the target and x as the feature), and look at the resulting coefficients and R-squared. Rerun it about 5-6 times to generate different simulated datasets. What do you notice about the model’s coefficient on x and the R-squared values?
 
-sim1a <- tibble(
+```{r}
+simla <- tibble(
   x = rep(1:10, each = 3),
   y = x * 1.5 + 6 + rt(length(x), df = 2)
 )
+
+n <- 30 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  simla_samp <- simla %>% sample_n(30) # random sample
+  simla_samp_lm <- lm(y ~ x, data = simla_samp)
+  slopes[i] <- coef(simla_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+
+(simla_lm <- lm(formula = y ~ x, data = simla))
+
+tidy(simla_lm)
+
+```
+
