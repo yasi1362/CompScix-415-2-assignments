@@ -49,7 +49,7 @@ not_cancelled %>% group_by(tailnum) %>%
   summarise(sum(distance))
 ```
 
-#####4- Here are the observations of cancelled flights:
+#####4- Here are the observations of cancelled flights below:
 ```{r}
 by_day <- (flights %>% mutate(cancelled = (is.na(dep_delay) | is.na(arr_delay))) %>%
   group_by(year, month, day) %>% 
