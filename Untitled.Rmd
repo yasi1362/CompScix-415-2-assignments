@@ -1,0 +1,161 @@
+---
+title: "Untitled"
+author: "Yasmin Makoui"
+date: "7/17/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+n <- 1000 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  diam_samp <- diamonds %>% sample_n(10000) # random sample
+  diam_samp_lm <- lm(price ~ carat, data = diam_samp)
+  slopes[i] <- coef(diam_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+(diam_lm <- lm(formula = price ~ carat, data = diamonds))
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+library(broom)
+tidy(diam_lm)
+```
+
+```{r}
+library(rvest)
+## if you don't have the rvest package, install it first:
+# install.packages('rvest')
+big_lebowski <- read_html("http://www.imdb.com/title/tt0118715/?ref_=nv_sr_1")
+class(big_lebowski)
+
+big_lebowski %>%
+   html_nodes("#titleCast .itemprop span") %>%
+   html_text()
+```
+
+simla <- tibble(
+  x = rep(1:10, each = 3),
+  y = x * 1.5 + 6 + rt(length(x), df = 2)
+)
+
+n <- 30 #how many samples
+slopes <- rep(NA, n) # empty vector for saving coefficients
+for(i in 1:n) {
+  simla_samp <- simla %>% sample_n(30) # random sample
+  simla_samp_lm <- lm(y ~ x, data = simla_samp)
+  slopes[i] <- coef(simla_samp_lm)[2] # store the coefficient
+}
+slopes <- as_tibble(slopes)
+
+slopes %>% ggplot(aes(slopes)) +
+  geom_histogram()
+
+```{r}
+fit_model <- function(samp_size, x_var) {
+  diam_samp <- diamonds %>% sample_n(samp_size) # random sample
+  mod_formula <- paste0('price ~ ', x_var)
+  diam_samp_lm <- lm(mod_formula, data = diam_samp)
+  all_results <- coef(diam_samp_lm)[2] # store the coefficient
+  return(all_results)
+}
+  fit_model(100, 'carat')
+```  
+
+```{r}
+fit_model <- function(samp_size, x_var) {
+  diam_samp <- diamonds %>% sample_n(samp_size) # random sample
+  mod_formula <- paste0('price ~ ', x_var)
+  diam_samp_lm <- lm(mod_formula, data = diam_samp)
+  slopes <- coef(diam_samp_lm)[2] # store the coefficient
+  all_results <- list(my_samp = diam_samp, my_mods = diam_samp_lm, slope = slopes )
+  return(all_results)
+}
+  fit_model(100, 'carat')
+
+n <- 3
+slopes <- rep(NA, n) # empty vector for saving coefficients
+my_mods <- my_samps <- list() # empty lists for saving models and samples
+for(i in 1:n) {
+  my_result <- fit_model(100, 'carat')
+  my_samps[[i]] <- my_result$my_samp  # store the sample in my_samps
+  my_mods[[i]] <- my_result$my_mod # store the model in my_mods
+  slopes[i] <- my_result$slope # extract the slope and store in it in slopes
+}
+all_results <- tibble(my_samps, my_mods, slopes)
+```
+
+```{r}
+library(rgdal)
+library(mdsr)
+glimpse(CholeraDeaths)
+proj4string(CholeraDeaths) <- CRS("+init=epsg:27700")
+
+cholera_latlong <- CholeraDeaths %>% spTransform(CRS("+init=epsg:4326"))
+head(cholera_latlong)
+
+library(ggmap)
+```
+
+```{r}
+library(mdsr)
+library(ggmap)
+library(rgdal)
+# get map tiles
+m <- get_map('John Snow, London, England', zoom = 17, 
+             maptype = 'roadmap', source = 'google', urlonly = FALSE)
+snow <- ggmap(m) + 
+  geom_point(data = as.data.frame(cholera_latlong), 
+             aes(x = coords.x1, y = coords.x2, size = Count))
+snow
+```
+
+```{r}
+library(RgoogleMaps)
+library(leaflet)
+leaflet() %>% addTiles()
+```
+
+```{r}
+library(ggmap)
+ucb_ext <- '160 Spear St, San Francisco, CA'
+geocode(ucb_ext)
+
+leaflet() %>%
+  setView(lng = -122.3937, lat = 37.79137, zoom = 14) %>% addTiles()
+```
+
+```{r}
+library(ggmap)
+ucb_ext <- '160 Spear St, San Francisco, CA'
+ucb_geo <- geocode(ucb_ext)
+map <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = ~lon, lat = ~lat, data = ucb_geo)
+map
+```
+
+```{r}
+library(ggmap)
+cholera_coords <- as.data.frame(cholera_latlong)
+head(cholera_coords)
+cholera_coords <- cholera_coords %>% transmute(latitude = coords.x1, longitude = coords.x2)
+cholera <- leaflet(cholera_latlong) %>%
+  addTiles() %>%
+  addMarkers()
+
+cholera
+```
+
+```{r}
+library(forecast)
+library(tseries)
+daily_data <- read_csv('/Users/yasminmakoui/downloads/day.csv')
+glimpse(daily_data)
+```
