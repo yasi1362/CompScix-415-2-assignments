@@ -25,3 +25,18 @@ library(RgoogleMaps)
 library(leaflet)
 library(rgdal)
 ```
+
+###Excercise 1
+####Create an R function that takes as its input argument a city name and creates a slippy leaflet map as its output. The leaflet map should already be zoomed in onto the city that is input into the function and should contain markers for each of the bike station locations, and each marker should show the number of bikes when hovered over by the mouse cursor (see example below). Feel free to add your own flourishes to the map.
+
+####On your final html document I want to see the code and one slippy map for any of the given cities. Do not attempt to put multiple slippy maps on your html file - it may break.
+
+####Name your function map_it. To pull the data, you will use the fromJSON function (set the flatten argument to TRUE).
+
+```{r}
+### You can use this vector of city names to test your function
+cities <- c('Luxembourg', 'Dublin', 'Brisbane', 'Seville', 'Stockholm', 'Ljubljana')
+
+cities
+```
+
