@@ -238,6 +238,54 @@ library(tseries)
 library(RgoogleMaps)
 library(leaflet)
 library(rgdal)</code></pre>
+<div id="exercise-1---sampling-distributions-functions-and-for-loops-10-points" class="section level2">
+<h2>Exercise 1 - Sampling Distributions, Functions and For Loops (10 points)</h2>
+<pre class="r"><code># sample size
+samp_size &lt;- 100
+# set the rate parameter
+samp_rate &lt;- 1/10000
+
+# take sample
+rexp(n = samp_size, rate = samp_rate)</code></pre>
+<pre><code>##   [1] 11681.98252 16478.19510  7293.56237    29.25411 26972.75294
+##   [6] 10148.66922  7313.56549  2105.50651   822.72098  4302.83008
+##  [11] 18680.24649  8900.64794  5938.25676  9740.88953 38697.60772
+##  [16]  7581.03557   695.47864  6751.51719  3578.81797 14708.18460
+##  [21]  2139.21905  7909.47575   185.60413  2084.38449  2536.13420
+##  [26] 16028.27862 27160.96567  9660.47975 14888.23663 33782.08287
+##  [31]  7501.05378 16966.71430  4099.54054  4153.89729  5636.85417
+##  [36] 34412.24567  2287.81282  3073.06158 16969.91954 13237.77208
+##  [41] 12294.87080 16743.24673  2363.90968   852.36100 58250.90155
+##  [46]  1829.64544 26402.96901  4478.48553  1140.53917 16278.44652
+##  [51]  9393.54809  1378.09587  2115.37793  1620.66574  6922.07048
+##  [56] 19247.52843 14388.05138  2585.48062    51.14442 17805.48775
+##  [61]  8247.82859  7087.77348 12203.06748  3114.44958 14302.42067
+##  [66] 11563.81660  3726.41208 18168.27523 13960.02241  1048.73360
+##  [71]  2288.70159  9397.80342 26782.86070 32414.57730  7602.72311
+##  [76]  7783.98911   430.28606 21919.13018  2835.04402  4520.00628
+##  [81] 12453.11581  2240.40351  5952.58035  7936.69651   876.11678
+##  [86]  5547.80378  5554.88284 18721.74444 15380.37611  7140.11775
+##  [91] 14837.48015 13234.90285  3840.31909 29719.30390   175.39774
+##  [96] 10945.01224 40870.40262 11526.88352 33138.81099  6091.74152</code></pre>
+<div id="step-1" class="section level3">
+<h3>STEP 1</h3>
+<div id="write-an-r-function-that-does-the-following" class="section level4">
+<h4>Write an R function that does the following:</h4>
+</div>
+<div id="takes-a-sample-of-size-samp_size-from-this-exponential-distribution-samp_size-is-an-input-parameter-for-the-function" class="section level4">
+<h4>Takes a sample of size samp_size from this exponential distribution (samp_size is an input parameter for the function)</h4>
+</div>
+<div id="calculates-the-mean-of-that-sample" class="section level4">
+<h4>Calculates the mean of that sample</h4>
+</div>
+<div id="calculates-the-standard-deviation-of-that-sample" class="section level4">
+<h4>Calculates the standard deviation of that sample</h4>
+</div>
+<div id="returns-the-calculated-mean-and-standard-deviation-as-a-list" class="section level4">
+<h4>Returns the calculated mean and standard deviation as a list</h4>
+</div>
+</div>
+</div>
 
 
 

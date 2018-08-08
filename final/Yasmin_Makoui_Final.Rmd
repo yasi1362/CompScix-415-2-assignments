@@ -26,3 +26,27 @@ library(leaflet)
 library(rgdal)
 ```
 
+##Exercise 1 - Sampling Distributions, Functions and For Loops (10 points)
+```{r}
+# sample size
+samp_size <- 100
+# set the rate parameter
+samp_rate <- 1/10000
+
+# take sample
+rexp(n = samp_size, rate = samp_rate)
+```
+
+###STEP 1
+
+####Write an R function that does the following:
+
+####Takes a sample of size samp_size from this exponential distribution (samp_size is an input parameter for the function)
+####Calculates the mean of that sample
+####Calculates the standard deviation of that sample
+####Returns the calculated mean and standard deviation as a list 
+
+```{r}
+
+```
+
