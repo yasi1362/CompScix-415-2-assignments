@@ -42,8 +42,8 @@ cities
 ```{r}
 library(jsonlite)
 # Pulling data for Dublin
-url_bike <- paste0("https://api.jcdecaux.com/vls/v1/stations?contract=",'Dublin',"&apiKey=b320f0b8ee7497f3b9238c637ac31bbfb27a8388")
-df_api_bike <- as.data.frame(fromJSON(url_bike))
+url_bike <- paste0("https://api.jcdecaux.com/vls/v1/stations?contract=",cities[[n]],"&apiKey=b320f0b8ee7497f3b9238c637ac31bbfb27a8388")
+df_api_bike <- as.data.frame(fromJSON(url_bike), flatten = TRUE)
 
 df_api_bike
 
@@ -54,12 +54,17 @@ library(ggmap)
 library(leaflet)
 bike_map <- (url_bike)
 
+library(ggmap)
+bike_coords <- as.data.frame(url_bike)
+head(bike_coords)
 
-bike_geo <- geocode(bike_map)
-map <- leaflet() %>%
+bike_coords <- bike_coords %>% transmute(latitude = position.lat, longitude = position.lng)
+bike <- leaflet(url_bike) %>%
   addTiles() %>%
-  addMarkers(lng = ~lon, lat = ~lat, data = bike_geo)
-map
+  addMarkers()
+
+bike
+
 ```
 
 
