@@ -47,6 +47,12 @@ rexp(n = samp_size, rate = samp_rate)
 ####Returns the calculated mean and standard deviation as a list 
 
 ```{r}
-
+samp_fun <- function(samp_size, samp_rate) {
+  
+  ...your code here...
+  
+  stats <- list(samp_avg = samp_avg, samp_std_dev = samp_std_dev)
+  return(stats)
+}
 ```
 
