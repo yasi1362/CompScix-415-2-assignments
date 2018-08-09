@@ -1,0 +1,88 @@
+---
+title: "Untitled 2"
+author: "Yasmin Makoui"
+date: "8/7/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(mdsr)
+library(broom)
+library(ggmap)
+library(forecast)
+library(tseries)
+library(RgoogleMaps)
+library(leaflet)
+library(rgdal)
+install.packages("shiny")
+```
+
+```{r}
+library(shiny)
+ui <- fluidPage(
+  
+  # App title ----
+  titlePanel("Hello Shiny!"),
+  
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+      
+    ),
+    
+    # Main panel for displaying outputs ----
+    mainPanel(
+      
+      # Output: Histogram ----
+      plotOutput(outputId = "distPlot")
+      
+    )
+  )
+)
+
+server <- function(input, output) {
+  
+  # Load packages
+  library(tidyverse)
+  
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is "reactive" and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot <- renderPlot({
+    faithful %>% ggplot(aes(x = waiting)) +
+      geom_histogram(bins = input$bins) +
+      theme_bw()
+  })
+  
+}
+
+# Look at ui object
+ui
+
+# Look at server function
+server
+
+# Run the app using the shinyApp function
+shinyApp(ui, server)
+
+```
+
