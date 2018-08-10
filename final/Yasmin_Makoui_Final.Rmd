@@ -124,22 +124,17 @@ glance(mod)
 ####a. What proportion of visitors converted for each version of the webpage?
 ```{r}
 #import csv file
-file_path_ab <- '/Users/yasminmakoui/downloads/ab_test_data.csv'
-ab_data <- read_csv(file = file_path_ab)
+file_path_ab_data <- '/Users/yasminmakoui/downloads/ab_test_data.csv'
+ab_data <- read_csv(file = file_path_ab_data)
 
 ab_data_tibble <- as_tibble(ab_data)
 
-ab_table <- ab_data_tibble %>% group_by(version, conversion) %>%
-  summarize(num_A = sum(conversion))
-
-ab_table
+ab_data_tibble
 
 ab_table_total <- ab_data_tibble %>% group_by(version, conversion) %>%
   summarize(conv_count = count(version))
 
 ab_table_total
-
-conv_prop_a <- ab_table_total %>% summarise(total_count = conv_count)
 
 ```
 
