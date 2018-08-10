@@ -27,6 +27,7 @@ library(rgdal)
 ```
 
 ##Exercise 1 - Sampling Distributions, Functions and For Loops (10 points)
+
 ```{r}
 # sample size
 samp_size <- 100
@@ -47,12 +48,69 @@ rexp(n = samp_size, rate = samp_rate)
 ####Returns the calculated mean and standard deviation as a list 
 
 ```{r}
-samp_fun <- function(samp_size, samp_rate) {
-  
-  ...your code here...
-  
-  stats <- list(samp_avg = samp_avg, samp_std_dev = samp_std_dev)
-  return(stats)
-}
+
 ```
+
+##Exercise 2 - Linear Regression (5 points)
+####For this exercise we will return to the House Prices prediction dataset that we used for HW 7. You should have already downloaded the train.csv dataset before, but if you didn’t you can download it from Canvas in this week’s module.
+
+####Load the train.csv dataset into R and fit a regression model with:
+####y = SalePrice
+####Features: LotArea, OverallQual, and ExterQual
+####Answer these questions:
+####Use the broom package to output the coefficients and the R-squared
+```{r}
+library(broom)
+#import csv file
+file_path_train <- '/Users/yasminmakoui/downloads/train.csv'
+train_data <- read_csv(file = file_path_train)
+
+# Fit a model with intercept only
+mod <- lm(SalePrice ~ LotArea + OverallQual + ExterQual, data = train_data)
+
+tidy(mod)
+
+```
+
+```{r}
+library(broom)
+# Fit a model with intercept only
+mod_LA <- lm(SalePrice ~ LotArea, data = train_data)
+
+tidy(mod_LA)
+```
+
+```{r}
+library(broom)
+# Fit a model with intercept only
+mod_OQ <- lm(SalePrice ~ OverallQual, data = train_data)
+
+tidy(mod_OQ)
+```
+
+```{r}
+library(broom)
+# Fit a model with intercept only
+mod_EQ <- lm(SalePrice ~ ExterQual, data = train_data)
+
+tidy(mod_EQ)
+```
+
+####Interpret the coefficient on LotArea:
+#####For every extra square foot in lot area, the sale price increases, on average, by $1.45, with all other features being held constant. 
+```{r}
+glance(mod_LA)
+```
+
+#####LotArea is statistically and practically significant.
+
+####Interpret the coefficient on ExterQualGd
+#####The mean difference in the sale price between Good and Excellent material on the exterior quality is -71,529 dollars, so good is less expensive by over 70K, with all other features being held constant. The mean difference in the sale price between Average and Excellent material on the exterior quality is -97,526 dollars, so Average is less expensive by over 97K with all other features being held constant. The mean difference in the sale price between Fair and Excellent material on the exterior quality is -95,352 dollars, with all other features being held constant, so Fair is less expensive by over 95K.
+
+####Compare this model to the model we fit in HW 7 with GrLivArea,  OverallQual, Neighborhood. Which is the better fitting model?
+```{r}
+glance(mod)
+```
+#####Based on the adjusted R-squared (.69), the model seems to be a good fit to the data. However, the adjusted R-Squared in HW7 with GrLivArea,  OverallQual, Neighborhood is higher at (.78), which indicates the HW7 model is a better fitting model.
+
 
