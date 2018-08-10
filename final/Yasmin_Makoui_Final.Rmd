@@ -152,5 +152,47 @@ prop_b
   * Version B conversion rate is 10%
 
 ####b. Perform the AB test in R. What is the p-value for the AB test (hypothesis test of proportions)?
+```{r}
+true_a <- prop_a
+true_b <- prop_b
+
+samp_a <- rbinom(n = 1, size = n_a, prob = true_a)
+samp_b <- rbinom(n = 1, size = n_b, prob = true_b)
+
+samp_a
+samp_b
+```
+
+```{r}
+m <- 1000
+samp_a <- rbinom(n = m, size = n_a, prob = true_a)
+samp_b <- rbinom(n = m, size = n_b, prob = true_b)
+
+plot_ab <- as_tibble(list(samp_a = samp_a/n_a, samp_b = samp_b/n_b))
+plot_ab %>% ggplot(aes(x = samp_a)) +
+  geom_histogram(binwidth = .001) +
+  xlab('Sample proportions for Version A') +
+  theme_bw()
 
 
+```
+
+```{r}
+plot_ab %>% ggplot(aes(x = samp_b)) +
+  geom_histogram(binwidth = .001) +
+  xlab('Sample proportions for Version B') +
+  theme_bw()
+```
+
+```{r}
+true_a <- prop_a
+true_b <- prop_b
+
+samp_a <- rbinom(n = 1, size = n_a, prob = true_a)
+samp_b <- rbinom(n = 1, size = n_b, prob = true_b)
+
+two_prop_test <- prop.test(c(samp_a, samp_b), c(1000, 1000))
+two_prop_test$p.value
+```
+
+  * The P-Value is small, so the conversion rates for Version A and B are significantly different than each other, so we'd conclude here that whatever changes were made to the webpage had an effect.
