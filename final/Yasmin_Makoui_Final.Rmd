@@ -129,16 +129,19 @@ ab_data <- read_csv(file = file_path_ab_data)
 
 ab_data_tibble <- as_tibble(ab_data)
 
-ab_data_tibble
-
 ab_table_total <- ab_data_tibble %>% group_by(version, conversion) %>%
   summarize(conv_count = count(version))
 
 ab_table_total
 
+prop_a <- (83/(83+1917))
+prop_b <- (200/(200+1800))
+
+prop_a
+prop_b
 ```
-
-
+  * Version A coversion rate is 4.15%
+  * Version B conversion rate is 10%
 
 ####b. Perform the AB test in R. What is the p-value for the AB test (hypothesis test of proportions)?
 
