@@ -35,7 +35,8 @@ samp_size <- 100
 samp_rate <- 1/10000
 
 # take sample
-rexp(n = samp_size, rate = samp_rate)
+car_battery_miles <- rexp(n = samp_size, rate = samp_rate)
+as.data.frame(car_battery_miles)
 ```
 
 ###STEP 1
@@ -48,7 +49,56 @@ rexp(n = samp_size, rate = samp_rate)
 ####Returns the calculated mean and standard deviation as a list 
 
 ```{r}
+samp_fun_df <- as.data.frame(samp_fun <- function(samp_size, samp_rate) {
+  samp_size_samp <- car_battery_miles %>% sample_n(100) # random sample
+  mod_formula <- paste0(car_battery_miles ~ 1, samp_rate)
+  car_samp_lm <- lm(mod_formula, data = samp_size_samp)
+  slopes <- coef(car_samp_lm)[2] # store the coefficient
+  samp_avg <- mean(car_samp_lm)
+  samp_std_dev <- IQR(car_samp_lm)
+  stats <- as_tibble(list(samp_avg = samp_avg, samp_std_dev = samp_std_dev))
+  return(stats)
+})
 
+```
+
+###STEP 2
+
+####Then write a loop that does this:
+
+####Runs the above function 1000 times, with samp_size = 50 and  samp_rate = 1/10000
+####Saves all of the sample means in a vector called sample_means, and all of the sample standard deviations in a vector called sample_sds
+
+  * the following code gave me errors for tbl should be as data frame 
+
+```
+n <- 1000
+slopes <- rep(NA, n) # empty vector for saving coefficients
+my_mods <- my_samps <- list() # empty lists for saving models and samples
+for(i in 1:n) {
+  my_result <- as.data.frame(samp_fun(100, car_battery_miles))
+  samp_avg[[i]] <- my_result$my_samp  
+  samp_std_dev[[i]] <- my_result$my_mod
+  slopes[i] <- my_result$slope # extract the slope and store in it in slopes
+}
+all_results <- tibble(samp_avg, samp_std_dev, slopes)
+all_results
+```
+
+###STEP 3
+
+####Then
+
+####plot your sample means as a histogram
+####Output the standard deviation of your sample means
+####calculate the theoretical standard error (σ=10000, n = sample size)
+####calculate the mean of the sample standard deviations and use this to calculate the empirical standard error
+
+```
+all_results %>% ggplot(aes(x = samp_avg)) +
+  geom_histogram(color = 'white', fill = 'red') +
+  labs(x = 'Sample Mean', title = 'Distribution of model fit on Car Battery Data') +
+  theme_bw()
 ```
 
 ##Exercise 2 - Linear Regression (5 points)
@@ -196,3 +246,50 @@ two_prop_test$p.value
 ```
 
   * The P-Value is small, so the conversion rates for Version A and B are significantly different than each other, so we'd conclude here that whatever changes were made to the webpage had an effect.
+
+```{r}
+true_a <- prop_a
+true_b <- prop_b
+
+prop_test_prop_a <- prop.test(x = samp_a, n = n_a, p = prop_a)
+prop_test_a03 <- prop.test(x = samp_a, n = n_a, p = .03)
+prop_test_a04 <- prop.test(x = samp_a, n = n_a, p = .04)
+prop_test_a05 <- prop.test(x = samp_a, n = n_a, p = .05)
+prop_test_a06 <- prop.test(x = samp_a, n = n_a, p = .06)
+
+prop_test_prop_a$p.value
+prop_test_a03$p.value
+prop_test_a04$p.value
+prop_test_a05$p.value
+prop_test_a06$p.value
+
+```
+
+  * For sample A as we move away from 4% conversion rate the p-value gets smaller which indicates that the the the probability that the conversion rate is truly around 4% is very high.
+  
+```{r}
+true_a <- prop_a
+true_b <- prop_b
+
+prop_test_prop_b <- prop.test(x = samp_b, n = n_b, p = prop_b)
+prop_test_b03 <- prop.test(x = samp_b, n = n_b, p = .03)
+prop_test_b04 <- prop.test(x = samp_b, n = n_b, p = .04)
+prop_test_b05 <- prop.test(x = samp_b, n = n_b, p = .05)
+prop_test_b06 <- prop.test(x = samp_b, n = n_b, p = .06)
+prop_test_b08 <- prop.test(x = samp_b, n = n_b, p = .08)
+prop_test_b09 <- prop.test(x = samp_b, n = n_b, p = .09)
+prop_test_b10 <- prop.test(x = samp_b, n = n_b, p = .10)
+prop_test_b11 <- prop.test(x = samp_b, n = n_b, p = .11)
+
+prop_test_prop_b$p.value
+prop_test_b03$p.value
+prop_test_b04$p.value
+prop_test_b05$p.value
+prop_test_b06$p.value
+prop_test_b08$p.value
+prop_test_b09$p.value
+prop_test_b10$p.value
+prop_test_b11$p.value
+```
+
+* For sample B as we move away from 10% conversion rate the p-value gets smaller which indicates that the the the probability that the conversion rate is truly around 10% is very high.
