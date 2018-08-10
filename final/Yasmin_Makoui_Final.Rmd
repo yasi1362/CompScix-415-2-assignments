@@ -96,21 +96,55 @@ mod_EQ <- lm(SalePrice ~ ExterQual, data = train_data)
 tidy(mod_EQ)
 ```
 
-####Interpret the coefficient on LotArea:
-#####For every extra square foot in lot area, the sale price increases, on average, by $1.45, with all other features being held constant. 
+####Interpret the coefficient on LotArea: 
+  * For every extra square foot in lot area, the sale price increases, on average, by $1.45, with all other features being held constant. 
 ```{r}
 glance(mod_LA)
 ```
 
-#####LotArea is statistically and practically significant.
+  * LotArea is statistically and practically significant.
 
 ####Interpret the coefficient on ExterQualGd
-#####The mean difference in the sale price between Good and Excellent material on the exterior quality is -71,529 dollars, so good is less expensive by over 70K, with all other features being held constant. The mean difference in the sale price between Average and Excellent material on the exterior quality is -97,526 dollars, so Average is less expensive by over 97K with all other features being held constant. The mean difference in the sale price between Fair and Excellent material on the exterior quality is -95,352 dollars, with all other features being held constant, so Fair is less expensive by over 95K.
+  * Excellent is our reference category for ExterQual
+  * The mean difference in the sale price between Good and Excellent material on the exterior quality is -71,529 dollars, so good is less expensive by over 71K, with all other features being held constant. 
 
 ####Compare this model to the model we fit in HW 7 with GrLivArea,  OverallQual, Neighborhood. Which is the better fitting model?
 ```{r}
 glance(mod)
 ```
-#####Based on the adjusted R-squared (.69), the model seems to be a good fit to the data. However, the adjusted R-Squared in HW7 with GrLivArea,  OverallQual, Neighborhood is higher at (.78), which indicates the HW7 model is a better fitting model.
+  * Based on the adjusted R-squared (.69), the model seems to be a good fit to the data. However, the adjusted R-Squared in HW7 with GrLivArea,  OverallQual, Neighborhood is higher at (.78), which indicates the HW7 model is a better fitting model.
+  
+###Exercise 3 - AB Testing (5 points)
+####Download the ab_test_data.csv file from Canvas. This file contains two columns: version and conversion. Each row is a visitor to a webpage. The  version column tells us which version of the webpage the visitor saw, and the  conversion column is a binary value and equals 1 if the visitor converted (0 otherwise).
+
+####We want to perform an AB test on this data to see if the conversion rates are different for the two versions of the webpage.
+
+####Answer these questions:
+
+####a. What proportion of visitors converted for each version of the webpage?
+```{r}
+#import csv file
+file_path_ab <- '/Users/yasminmakoui/downloads/ab_test_data.csv'
+ab_data <- read_csv(file = file_path_ab)
+
+ab_data_tibble <- as_tibble(ab_data)
+
+ab_table <- ab_data_tibble %>% group_by(version, conversion) %>%
+  summarize(num_A = sum(conversion))
+
+ab_table
+
+ab_table_total <- ab_data_tibble %>% group_by(version, conversion) %>%
+  summarize(conv_count = count(version))
+
+ab_table_total
+
+conv_prop_a <- ab_table_total %>% summarise(total_count = conv_count)
+
+```
+
+
+
+####b. Perform the AB test in R. What is the p-value for the AB test (hypothesis test of proportions)?
 
 

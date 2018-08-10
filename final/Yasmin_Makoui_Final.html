@@ -247,26 +247,26 @@ samp_rate &lt;- 1/10000
 
 # take sample
 rexp(n = samp_size, rate = samp_rate)</code></pre>
-<pre><code>##   [1]  4970.81232 16429.50086  7518.98189  2766.82309  4387.28574
-##   [6]   730.55101  2591.83100 22234.17589  1167.89284  5638.63249
-##  [11] 16448.90511  5629.52910 10842.33638 10913.12327   606.76457
-##  [16]  7176.04879 29626.16637 11003.42830 36116.63108  6310.08157
-##  [21]  7870.00042 12928.54242  9705.97139  5409.77468  6441.07423
-##  [26]  4063.90626  8085.83780  5660.08892  5097.65484  3882.53636
-##  [31] 25156.45837  8072.92316  5880.17022  9603.33668  4684.85667
-##  [36]  4357.15507  6266.22053 62321.16922 22617.44583   623.62136
-##  [41]   397.84822 11254.42190  4452.81090   110.94684 12086.67457
-##  [46] 13727.50109 13398.48125  3817.86904    55.98901 17217.46605
-##  [51] 11581.92893 24471.45203  6733.43383   954.95609  8265.54234
-##  [56]  6232.64474  6626.70227 15184.21876  3296.67808 13125.84192
-##  [61]  3976.29851  2526.48640  4334.04390 11010.11817 15616.86359
-##  [66]   402.16408  3942.51297 19223.93056  4476.92552  1066.76288
-##  [71]  4810.96682 24115.92705  4534.30664   944.54052  2750.95723
-##  [76]  1006.09429  9541.95377  7599.65055 10805.63281  4027.10222
-##  [81] 17248.04453 14336.35004  7678.71933 25374.28459  3160.94331
-##  [86]  1302.83857   396.73683 12686.78847  2025.29888 11262.33024
-##  [91]  5582.92091  4391.11690   852.15080  3249.97817  2723.75644
-##  [96]  6865.87334 12185.45853  8703.89473  1384.91062  4427.50437</code></pre>
+<pre><code>##   [1]  6143.78307 12784.47144  2790.29146 41064.89328  6948.16664
+##   [6]  7409.12387  9102.30418    68.70736  4608.41457  1408.66170
+##  [11]  2658.05692 53910.81320  6563.96590 10592.13174 10173.90703
+##  [16] 11830.28990 10759.08861  3428.92615 13693.56331 28377.18688
+##  [21] 11980.37530  3401.49396  8305.18460  3292.08681  9640.85056
+##  [26] 42637.21633 10499.21665  9428.63526  1386.67865  9106.40188
+##  [31]  2215.73784 17381.53096  1304.37985 68113.48660 14972.73832
+##  [36]  6573.74354  7054.42821  7513.62230  6705.86716   902.95138
+##  [41] 22134.72662  3881.26842   473.60192    51.00096  3289.91557
+##  [46]  4385.17993  1836.63340  8638.48051 22839.92583 22344.72385
+##  [51]  1745.21756  6879.00723  8441.91933  7408.06701   157.27583
+##  [56]  1855.03523  5266.63825   977.56736 12875.51891 22415.38781
+##  [61]  5412.54296 11935.94311  4679.88462  5548.58933  8246.75975
+##  [66]  2278.46936 13749.15010 32189.07848 15906.79430  6984.21213
+##  [71]  6036.47222  5988.26346  7392.10367  2730.35450 34917.37475
+##  [76] 15854.53406 44610.12960 11008.52638  6909.41669  5942.22580
+##  [81]  1706.21054  7600.94357 10736.69264 11815.27769  9012.67052
+##  [86]  8885.38268   983.85479  1185.10435  6783.35114  9078.71566
+##  [91]  3283.94962  6910.77547 24211.48227   939.29282  8451.79736
+##  [96]  3732.03051 24706.24748 15452.63005 12959.91340  7856.91901</code></pre>
 <div id="step-1" class="section level3">
 <h3>STEP 1</h3>
 <div id="write-an-r-function-that-does-the-following" class="section level4">
@@ -375,23 +375,24 @@ tidy(mod_EQ)</code></pre>
 </div>
 <div id="interpret-the-coefficient-on-lotarea" class="section level4">
 <h4>Interpret the coefficient on LotArea:</h4>
-<div id="for-every-extra-square-foot-in-lot-area-the-sale-price-increases-on-average-by-1.45-with-all-other-features-being-held-constant." class="section level5">
-<h5>For every extra square foot in lot area, the sale price increases, on average, by $1.45, with all other features being held constant.</h5>
+<ul>
+<li>For every extra square foot in lot area, the sale price increases, on average, by $1.45, with all other features being held constant.</li>
+</ul>
 <pre class="r"><code>glance(mod_LA)</code></pre>
 <pre><code>##    r.squared adj.r.squared    sigma statistic      p.value df    logLik
 ## 1 0.06961332    0.06897519 76653.77  109.0904 1.123139e-24  2 -18491.35
 ##       AIC      BIC     deviance df.residual
 ## 1 36988.7 37004.56 8.566918e+12        1458</code></pre>
-</div>
-<div id="lotarea-is-statistically-and-practically-significant." class="section level5">
-<h5>LotArea is statistically and practically significant.</h5>
-</div>
+<ul>
+<li>LotArea is statistically and practically significant.</li>
+</ul>
 </div>
 <div id="interpret-the-coefficient-on-exterqualgd" class="section level4">
 <h4>Interpret the coefficient on ExterQualGd</h4>
-<div id="the-mean-difference-in-the-sale-price-between-good-and-excellent-material-on-the-exterior-quality-is--71529-dollars-so-good-is-less-expensive-by-over-70k-with-all-other-features-being-held-constant.-the-mean-difference-in-the-sale-price-between-average-and-excellent-material-on-the-exterior-quality-is--97526-dollars-so-average-is-less-expensive-by-over-97k-with-all-other-features-being-held-constant.-the-mean-difference-in-the-sale-price-between-fair-and-excellent-material-on-the-exterior-quality-is--95352-dollars-with-all-other-features-being-held-constant-so-fair-is-less-expensive-by-over-95k." class="section level5">
-<h5>The mean difference in the sale price between Good and Excellent material on the exterior quality is -71,529 dollars, so good is less expensive by over 70K, with all other features being held constant. The mean difference in the sale price between Average and Excellent material on the exterior quality is -97,526 dollars, so Average is less expensive by over 97K with all other features being held constant. The mean difference in the sale price between Fair and Excellent material on the exterior quality is -95,352 dollars, with all other features being held constant, so Fair is less expensive by over 95K.</h5>
-</div>
+<ul>
+<li>Excellent is our reference category for ExterQual</li>
+<li>The mean difference in the sale price between Good and Excellent material on the exterior quality is -71,529 dollars, so good is less expensive by over 71K, with all other features being held constant.</li>
+</ul>
 </div>
 <div id="compare-this-model-to-the-model-we-fit-in-hw-7-with-grlivarea-overallqual-neighborhood.-which-is-the-better-fitting-model" class="section level4">
 <h4>Compare this model to the model we fit in HW 7 with GrLivArea, OverallQual, Neighborhood. Which is the better fitting model?</h4>
@@ -400,8 +401,37 @@ tidy(mod_EQ)</code></pre>
 ## 1 0.6950118      0.693963 43948.08  662.6794       0  6 -17677.16 35368.32
 ##        BIC     deviance df.residual
 ## 1 35405.32 2.808305e+12        1454</code></pre>
-<div id="based-on-the-adjusted-r-squared-.69-the-model-seems-to-be-a-good-fit-to-the-data.-however-the-adjusted-r-squared-in-hw7-with-grlivarea-overallqual-neighborhood-is-higher-at-.78-which-indicates-the-hw7-model-is-a-better-fitting-model." class="section level5">
-<h5>Based on the adjusted R-squared (.69), the model seems to be a good fit to the data. However, the adjusted R-Squared in HW7 with GrLivArea, OverallQual, Neighborhood is higher at (.78), which indicates the HW7 model is a better fitting model.</h5>
+<ul>
+<li>Based on the adjusted R-squared (.69), the model seems to be a good fit to the data. However, the adjusted R-Squared in HW7 with GrLivArea, OverallQual, Neighborhood is higher at (.78), which indicates the HW7 model is a better fitting model.</li>
+</ul>
+</div>
+<div id="exercise-3---ab-testing-5-points" class="section level3">
+<h3>Exercise 3 - AB Testing (5 points)</h3>
+<div id="download-the-ab_test_data.csv-file-from-canvas.-this-file-contains-two-columns-version-and-conversion.-each-row-is-a-visitor-to-a-webpage.-the-version-column-tells-us-which-version-of-the-webpage-the-visitor-saw-and-the-conversion-column-is-a-binary-value-and-equals-1-if-the-visitor-converted-0-otherwise." class="section level4">
+<h4>Download the ab_test_data.csv file from Canvas. This file contains two columns: version and conversion. Each row is a visitor to a webpage. The version column tells us which version of the webpage the visitor saw, and the conversion column is a binary value and equals 1 if the visitor converted (0 otherwise).</h4>
+</div>
+<div id="we-want-to-perform-an-ab-test-on-this-data-to-see-if-the-conversion-rates-are-different-for-the-two-versions-of-the-webpage." class="section level4">
+<h4>We want to perform an AB test on this data to see if the conversion rates are different for the two versions of the webpage.</h4>
+</div>
+<div id="answer-these-questions-1" class="section level4">
+<h4>Answer these questions:</h4>
+</div>
+<div id="a.-what-proportion-of-visitors-converted-for-each-version-of-the-webpage" class="section level4">
+<h4>a. What proportion of visitors converted for each version of the webpage?</h4>
+<pre class="r"><code>#import csv file
+file_path_ab &lt;- '/Users/yasminmakoui/downloads/ab_test_data.csv'
+ab_data &lt;- read_csv(file = file_path_ab)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   version = col_character(),
+##   conversion = col_integer()
+## )</code></pre>
+<pre class="r"><code>ab_data_tibble &lt;- as_tibble(ab_data)
+
+a_count &lt;- ab_data_tibble %&gt;% group_by(version, conversion)</code></pre>
+</div>
+<div id="b.-perform-the-ab-test-in-r.-what-is-the-p-value-for-the-ab-test-hypothesis-test-of-proportions" class="section level4">
+<h4>b. Perform the AB test in R. What is the p-value for the AB test (hypothesis test of proportions)?</h4>
 </div>
 </div>
 </div>
