@@ -133,9 +133,17 @@ ab_table_total <- ab_data_tibble %>% group_by(version, conversion) %>%
   summarize(conv_count = count(version))
 
 ab_table_total
+n_a <- (83+1917)
+n_b <- (200+1800)
 
-prop_a <- (83/(83+1917))
-prop_b <- (200/(200+1800))
+conv_a <- 83
+conv_b <- 200
+
+n_a
+n_b
+
+prop_a <- (conv_a/(n_a))
+prop_b <- (conv_b/(n_b))
 
 prop_a
 prop_b
